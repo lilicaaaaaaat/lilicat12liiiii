@@ -7,6 +7,8 @@ public class plear : MonoBehaviour
     public float moveSpeed = 10f;
     private float _directionMove;
     private Rigidbody2D _playerRb;
+    bool canJump = true;
+        public float jumpForce = 5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,16 +26,19 @@ public class plear : MonoBehaviour
         velocity.x = _directionMove;
         _playerRb.velocity = velocity;
 
+        if (Input.GetKey(KeyCode.Space) && canJump)
+        {
+            _playerRb.velocity = Vector2.up * jumpForce;
+        }
     }
 
-    public float minJump = 15f, maxJump = 30f;
+
     void OnCollisionEnter2D(Collision2D obj)
     {
         if (obj.gameObject.CompareTag("Ground"))
         {
-            float jump = Random.Range(minJump, maxJump);
-            Rigidbody2D player = obj.gameObject.GetComponent<Rigidbody2D>();
-            player.velocity = Vector2.up * jump;
+            canJump = true;
+             
         }
     }
 }
