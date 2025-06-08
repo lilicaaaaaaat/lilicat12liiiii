@@ -10,6 +10,7 @@ public class heart : MonoBehaviour
         {
             Destroy(gameObject);
             GameObject.Find("heartSpawn").GetComponent<heartSpawn>().heartcount++;
+            GameObject.Find("heartSpawn").GetComponent<heartSpawn>().UpdateUI();
         }
          
     }
