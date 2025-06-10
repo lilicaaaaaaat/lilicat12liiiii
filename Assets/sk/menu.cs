@@ -9,4 +9,9 @@ public class menu : MonoBehaviour
     {
         SceneManager.LoadScene("level1");
     }
+
+      public void gotoLevel2()
+    {
+        SceneManager.LoadScene("level2");
+    }
 }
